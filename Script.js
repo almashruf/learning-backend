@@ -1,4 +1,14 @@
-FileSystem.appendFile("hey.text", "hello how are you", function (err) {
-  if (err) console.error(err);
-  else console.log("done");
-});
+const express = require('express')
+const app = express()
+
+app.use(function(req,res, next){
+  console.log('milleware go on');
+  next();
+})
+
+app.get('/', function(req,res){
+  res.send('Hello world')
+})
+
+
+app.listen(3000)
