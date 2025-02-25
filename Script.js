@@ -1,14 +1,13 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
-app.use(function(req,res, next){
-  console.log('milleware go on');
-  next();
-})
+app.get("/profile", function (req, res, next) {
+  return next(new Error("somthing went wrong"));
+});
 
-app.get('/', function(req,res){
-  res.send('Hello world')
-})
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("somthing went wrong, we dont know what to do");
+});
 
-
-app.listen(3000)
+app.listen(3000);
