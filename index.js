@@ -11,9 +11,8 @@ app.get("/", function (req, res) {
   res.render('index')
 });
 
-app.get("/profile/:user", function(req,res){
-    req.params.user
-    res.send("running")
+app.get("/profile/:user/:age", function(req,res){
+    res.send(`welcome, ${req.params.user} of age ${req.params.age}`)
 })
 
 app.listen(3000, function () {
